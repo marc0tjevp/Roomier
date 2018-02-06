@@ -69,4 +69,18 @@ public class Product {
     public void setCreateTask(boolean createTask) {
         this.createTask = createTask;
     }
+
+    public void incrementAmount(){
+        this.amount++;
+    }
+
+    public void decrementAmount(){
+        this.amount--;
+    }
+
+    public void isBelowMin(){
+        if(this.amount <= this.minAmount){
+            this.setCreateTask(true);
+        }
+    }
 }

@@ -33,4 +33,48 @@ public class Task {
         this.createdDate = createdDate;
         this.completedDate = completedDate;
     }
+
+    public UUID getTaskID() {
+        return taskID;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
+    public boolean isTaskCompleted() {
+        return taskCompleted;
+    }
+
+    public void setTaskCompleted(boolean taskCompleted) {
+        this.taskCompleted = taskCompleted;
+    }
+
+    public User getClaimedBy() {
+        return claimedBy;
+    }
+
+    public void setClaimedBy(User claimedBy) {
+        this.claimedBy = claimedBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getCompletedDate() {
+        return completedDate;
+    }
+
+    public void setCompletedDate(Date completedDate) {
+        this.completedDate = completedDate;
+    }
 }
