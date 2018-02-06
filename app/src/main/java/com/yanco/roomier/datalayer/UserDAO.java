@@ -4,5 +4,5 @@ package com.yanco.roomier.datalayer;
  * Created by Marco on 06/02/2018.
  */
 
-public class UserDAO {
+public class UserDAO implements DAO{
 }
