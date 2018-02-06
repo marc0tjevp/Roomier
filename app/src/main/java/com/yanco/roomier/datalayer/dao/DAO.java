@@ -1,4 +1,4 @@
-package com.yanco.roomier.datalayer;
+package com.yanco.roomier.datalayer.dao;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,4 +12,6 @@ public interface DAO {
     Object getByUUID(UUID id);
     void create(Object o);
     void update(Object o);
+    void delete(Object o);
+    void deleteById(UUID id);
 }
