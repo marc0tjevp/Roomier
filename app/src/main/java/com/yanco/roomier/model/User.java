@@ -1,7 +1,6 @@
 package com.yanco.roomier.model;
 
-import com.yanco.roomier.datalayer.dao.DAO;
-import com.yanco.roomier.datalayer.factories.DAOFactory;
+import com.yanco.roomier.datalayer.dao.EventDAO;
 
 /**
  * Created by Marco on 06/02/2018.
@@ -39,7 +38,7 @@ public class User {
         task.setClaimedBy(this);
     }
 
-    public void createEvent(Event event, DAO eventDAO){
+    public void createEvent(Event event, EventDAO eventDAO){
 
     }
 }
