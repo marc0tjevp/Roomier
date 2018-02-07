@@ -23,10 +23,9 @@ public class DatabaseConnection {
 
     public static DatabaseConnection getInstance() {
         if (instance == null) {
-            return new DatabaseConnection();
-        } else {
-            return instance;
+            instance = new DatabaseConnection();
         }
+        return instance;
     }
 
     //Create connection object with MySQL JDBC driver
