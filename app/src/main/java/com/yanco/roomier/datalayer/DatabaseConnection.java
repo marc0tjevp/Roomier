@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class DatabaseConnection {
     private static DatabaseConnection instance;
-    private String dbname = "netflix";
+    private String dbname = "roomier";
     private String user = "root";
     private String pass = "";
 
