@@ -11,19 +11,19 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DatabaseConnection {
-    private static DatabaseConnection instance;
+public class MySqlConnection {
+    private static MySqlConnection instance;
     private String dbname = "roomier";
     private String user = "root";
     private String pass = "";
 
-    private DatabaseConnection() {
+    private MySqlConnection() {
 
     }
 
-    public static DatabaseConnection getInstance() {
+    public static MySqlConnection getInstance() {
         if (instance == null) {
-            instance = new DatabaseConnection();
+            instance = new MySqlConnection();
         }
         return instance;
     }
@@ -36,7 +36,7 @@ public class DatabaseConnection {
                     .getConnection("jdbc:mysql://localhost/" + dbname, user, pass);
             return connection;
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySqlConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -47,7 +47,7 @@ public class DatabaseConnection {
             try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(DatabaseConnection.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MySqlConnection.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }

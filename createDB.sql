@@ -17,7 +17,7 @@ CreateDate Date NOT NULL,
 CompletedDate Date,
 PRIMARY KEY(TaskID),
 FOREIGN KEY(ClaimedBy) REFERENCES User(UserName)
-); 
+);
 
 CREATE TABLE Product (
 	ProductID varchar(255) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE Event (
 
 CREATE TABLE Event_User (
 	EventID varchar(255) NOT NULL,
-	UserName varchar(255)roomier NOT NULL,
+	UserName varchar(255) NOT NULL,
 	Accepted bit NOT NULL,
 	PRIMARY KEY(EventID, UserName),
 	FOREIGN KEY(EventID) REFERENCES Event(EventID),
