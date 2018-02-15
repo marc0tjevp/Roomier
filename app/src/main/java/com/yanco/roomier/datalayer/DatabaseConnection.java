@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 
 public class DatabaseConnection {
     private static DatabaseConnection instance;
-    private String dbname = "roomier";
-    private String user = "root";
-    private String pass = "";
+    private String dbname = "marcovp_roomier";
+    private String user = "marcovp_roomier";
+    private String pass = "7hfhlmgF!";
 
     private DatabaseConnection() {
 

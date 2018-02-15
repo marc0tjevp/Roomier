@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.yanco.roomier.datalayer.DatabaseConnection;
 import com.yanco.roomier.fragments.eventFragment;
 import com.yanco.roomier.fragments.productFragment;
 import com.yanco.roomier.fragments.taskFragment;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
         ft.replace(R.id.mainFrame, new productFragment());
         ft.commit();
 
+        System.out.println(DatabaseConnection.getInstance().connect());
     }
 
     @Override
