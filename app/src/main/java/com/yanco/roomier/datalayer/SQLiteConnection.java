@@ -58,6 +58,7 @@ public class SQLiteConnection extends SQLiteOpenHelper {
 
     public SQLiteConnection(Context context) {
         super(context, DATABASE_NAME , null, 1);
+        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
@@ -79,6 +80,7 @@ public class SQLiteConnection extends SQLiteOpenHelper {
                         "FOREIGN KEY(eventID) REFERENCES events(eventID), " +
                         "FOREIGN KEY(userName) REFERENCES users(userName));"
         );
+        System.out.println("ON CREATE DATABASE");
     }
 
     @Override
@@ -90,40 +92,5 @@ public class SQLiteConnection extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS tasks");
         db.execSQL("DROP TABLE IF EXISTS users");
         onCreate(db);
-    }
-
-
-    public boolean updateContact (Integer id, String name, String phone, String email, String street,String place) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("phone", phone);
-        contentValues.put("email", email);
-        contentValues.put("street", street);
-        contentValues.put("place", place);
-        db.update("contacts", contentValues, "id = ? ", new String[] { Integer.toString(id) } );
-        return true;
-    }
-
-    public Integer deleteContact (Integer id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("contacts",
-                "id = ? ",
-                new String[] { Integer.toString(id) });
-    }
-
-    public ArrayList<String> getAllCotacts() {
-        ArrayList<String> array_list = new ArrayList<String>();
-
-        //hp = new HashMap();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from contacts", null );
-        res.moveToFirst();
-
-        while(res.isAfterLast() == false){
-            array_list.add(res.getString(res.getColumnIndex(TASKS_COLUMN_NAME)));
-            res.moveToNext();
-        }
-        return array_list;
     }
 }
