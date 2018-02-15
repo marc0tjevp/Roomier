@@ -15,7 +15,7 @@ public class DatabaseConnection {
     private static DatabaseConnection instance;
     private String dbname = "marcovp_roomier";
     private String user = "marcovp_roomier";
-    private String pass = "7hfhlmgF!";
+    private String pass = "";
 
     private DatabaseConnection() {
 
