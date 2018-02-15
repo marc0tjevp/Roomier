@@ -12,8 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.yanco.roomier.datalayer.SQLiteConnection;
+import com.yanco.roomier.datalayer.dao.EventDAO;
 import com.yanco.roomier.datalayer.dao.SqlLiteEventDAO;
+import com.yanco.roomier.datalayer.factories.DAOFactory;
+import com.yanco.roomier.datalayer.factories.SqlLiteDAOFactory;
 import com.yanco.roomier.fragments.eventFragment;
 import com.yanco.roomier.fragments.productFragment;
 import com.yanco.roomier.fragments.taskFragment;
@@ -49,7 +51,9 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
 
         // Database Connection
-        SqlLiteEventDAO ev = new SqlLiteEventDAO(MainActivity.this);
+        DAOFactory SqlLiteDaoFactory = new SqlLiteDAOFactory(MainActivity.this);
+        EventDAO eventDAO = SqlLiteDaoFactory.getEventDAO();
+        eventDAO.getAllEvents();
     }
 
     @Override

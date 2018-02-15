@@ -1,5 +1,9 @@
 package com.yanco.roomier.datalayer.factories;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.yanco.roomier.datalayer.SQLiteConnection;
 import com.yanco.roomier.datalayer.dao.EventDAO;
 import com.yanco.roomier.datalayer.dao.ProductDAO;
 import com.yanco.roomier.datalayer.dao.SqlLiteEventDAO;
@@ -14,6 +18,14 @@ import com.yanco.roomier.datalayer.dao.UserDAO;
  */
 
 public class SqlLiteDAOFactory extends DAOFactory {
+    private SQLiteConnection connection;
+    private SQLiteDatabase database;
+
+    public SqlLiteDAOFactory(Context context){
+        connection = new SQLiteConnection(context);
+        database = connection.getWritableDatabase();
+    }
+
     @Override
     public UserDAO getUserDAO() {
         return new SqlLiteUserDAO();
@@ -31,7 +43,6 @@ public class SqlLiteDAOFactory extends DAOFactory {
 
     @Override
     public EventDAO getEventDAO() {
-//        return new SqlLiteEventDAO();
-        return null;
+        return new SqlLiteEventDAO(connection);
     }
 }

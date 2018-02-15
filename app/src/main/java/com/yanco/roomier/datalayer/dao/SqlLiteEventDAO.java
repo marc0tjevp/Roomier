@@ -18,15 +18,14 @@ import java.util.UUID;
 public class SqlLiteEventDAO implements EventDAO {
 
     private SQLiteConnection connection;
-    private SQLiteDatabase database;
 
-    public SqlLiteEventDAO(Context context) {
-        connection = new SQLiteConnection(context);
-        database = connection.getWritableDatabase();
+    public SqlLiteEventDAO(SQLiteConnection connection){
+        this.connection = connection;
     }
 
     @Override
     public List getAllEvents() {
+        System.out.println("All Events");
         return null;
     }
 
