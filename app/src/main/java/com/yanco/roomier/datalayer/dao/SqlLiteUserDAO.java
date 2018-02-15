@@ -1,5 +1,6 @@
 package com.yanco.roomier.datalayer.dao;
 
+import com.yanco.roomier.datalayer.SQLiteConnection;
 import com.yanco.roomier.model.User;
 
 /**
@@ -7,6 +8,12 @@ import com.yanco.roomier.model.User;
  */
 
 public class SqlLiteUserDAO implements UserDAO {
+
+    private SQLiteConnection connection;
+
+    public SqlLiteUserDAO(SQLiteConnection connection){
+        this.connection = connection;
+    }
 
     @Override
     public void insert(User user) {

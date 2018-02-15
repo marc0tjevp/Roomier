@@ -1,5 +1,6 @@
 package com.yanco.roomier.datalayer.dao;
 
+import com.yanco.roomier.datalayer.SQLiteConnection;
 import com.yanco.roomier.model.Task;
 import com.yanco.roomier.model.User;
 
@@ -11,6 +12,13 @@ import java.util.UUID;
  */
 
 public class SqlLiteTaskDAO implements TaskDAO {
+
+    private SQLiteConnection connection;
+
+    public SqlLiteTaskDAO(SQLiteConnection connection){
+        this.connection = connection;
+    }
+
     @Override
     public Map getAllTasks() {
         return null;

@@ -1,5 +1,6 @@
 package com.yanco.roomier.datalayer.dao;
 
+import com.yanco.roomier.datalayer.SQLiteConnection;
 import com.yanco.roomier.model.Product;
 
 import java.util.Map;
@@ -10,6 +11,13 @@ import java.util.UUID;
  */
 
 public class SqlLiteProductDAO implements ProductDAO {
+
+    private SQLiteConnection connection;
+
+    public SqlLiteProductDAO(SQLiteConnection connection){
+        this.connection = connection;
+    }
+
     @Override
     public Map getAllProducts() {
         return null;
