@@ -17,9 +17,8 @@ import java.sql.SQLException;
  */
 
 public class MySqlDAOFactory extends DAOFactory {
+
     private MySqlDAOFactory instance;
-    public static final String DRIVER = "/*driver here*/";
-    public static final String DBURL = "/*conn string here*/";
 
     public MySqlDAOFactory() {
     }
