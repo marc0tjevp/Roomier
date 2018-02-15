@@ -49,11 +49,6 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.mainFrame, new productFragment());
         ft.commit();
-
-        // Database Connection
-        DAOFactory SqlLiteDaoFactory = new SqlLiteDAOFactory(MainActivity.this);
-        EventDAO eventDAO = SqlLiteDaoFactory.getEventDAO();
-        eventDAO.getAllEvents();
     }
 
     @Override
