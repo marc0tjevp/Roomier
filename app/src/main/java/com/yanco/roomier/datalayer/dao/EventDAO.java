@@ -3,6 +3,7 @@ package com.yanco.roomier.datalayer.dao;
 import com.yanco.roomier.model.Event;
 import com.yanco.roomier.model.User;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
  */
 
 public interface EventDAO {
-    Map getAllEvents();
+    List getAllEvents();
     Event getEventById(UUID eventId);
     void insert(Event event);
     void update(Event event);

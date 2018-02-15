@@ -31,6 +31,7 @@ public class SqlLiteDAOFactory extends DAOFactory {
 
     @Override
     public EventDAO getEventDAO() {
-        return new SqlLiteEventDAO();
+//        return new SqlLiteEventDAO();
+        return null;
     }
 }

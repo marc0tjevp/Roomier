@@ -58,7 +58,6 @@ public class SQLiteConnection extends SQLiteOpenHelper {
 
     public SQLiteConnection(Context context) {
         super(context, DATABASE_NAME , null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
@@ -85,7 +84,7 @@ public class SQLiteConnection extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // TODO Auto-generated method stub
+        System.out.println("ON UPGRADE DATABASE");
         db.execSQL("DROP TABLE IF EXISTS event_user");
         db.execSQL("DROP TABLE IF EXISTS events");
         db.execSQL("DROP TABLE IF EXISTS products");

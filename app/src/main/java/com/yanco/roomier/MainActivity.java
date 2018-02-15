@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.yanco.roomier.datalayer.SQLiteConnection;
+import com.yanco.roomier.datalayer.dao.SqlLiteEventDAO;
 import com.yanco.roomier.fragments.eventFragment;
 import com.yanco.roomier.fragments.productFragment;
 import com.yanco.roomier.fragments.taskFragment;
@@ -48,8 +49,7 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
 
         // Database Connection
-        SQLiteConnection sc = new SQLiteConnection(MainActivity.this);
-
+        SqlLiteEventDAO ev = new SqlLiteEventDAO(MainActivity.this);
     }
 
     @Override

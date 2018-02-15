@@ -3,6 +3,7 @@ package com.yanco.roomier.datalayer.dao;
 import com.yanco.roomier.model.Event;
 import com.yanco.roomier.model.User;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -13,7 +14,7 @@ import java.util.UUID;
 public class MySqlEventDAO implements EventDAO {
 
     @Override
-    public Map getAllEvents() {
+    public List getAllEvents() {
         return null;
     }
 

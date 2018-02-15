@@ -1,8 +1,13 @@
 package com.yanco.roomier.datalayer.dao;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.yanco.roomier.datalayer.SQLiteConnection;
 import com.yanco.roomier.model.Event;
 import com.yanco.roomier.model.User;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -11,8 +16,17 @@ import java.util.UUID;
  */
 
 public class SqlLiteEventDAO implements EventDAO {
+
+    private SQLiteConnection connection;
+    private SQLiteDatabase database;
+
+    public SqlLiteEventDAO(Context context) {
+        connection = new SQLiteConnection(context);
+        database = connection.getWritableDatabase();
+    }
+
     @Override
-    public Map getAllEvents() {
+    public List getAllEvents() {
         return null;
     }
 
