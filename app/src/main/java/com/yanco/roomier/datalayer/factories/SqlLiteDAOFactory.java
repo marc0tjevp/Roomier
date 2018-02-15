@@ -28,17 +28,17 @@ public class SqlLiteDAOFactory extends DAOFactory {
 
     @Override
     public UserDAO getUserDAO() {
-        return new SqlLiteUserDAO();
+        return new SqlLiteUserDAO(connection);
     }
 
     @Override
     public ProductDAO getProductDAO() {
-        return new SqlLiteProductDAO();
+        return new SqlLiteProductDAO(connection);
     }
 
     @Override
     public TaskDAO getTaskDAO() {
-        return new SqlLiteTaskDAO();
+        return new SqlLiteTaskDAO(connection);
     }
 
     @Override

@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/Roomier.iml" filepath="$PROJECT_DIR$/Roomier.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mysql-connector-java-5.1.45-bin/mysql-connector-java-5.1.45-bin.iml" filepath="$PROJECT_DIR$/mysql-connector-java-5.1.45-bin/mysql-connector-java-5.1.45-bin.iml" />
-      <module fileurl="file://C:\Users\Gebruiker\AndroidStudioProjects\Roomier\mysql-connector-java-5.1.45-bin\mysql-connector-java-5.1.45-bin.iml" filepath="C:\Users\Gebruiker\AndroidStudioProjects\Roomier\mysql-connector-java-5.1.45-bin\mysql-connector-java-5.1.45-bin.iml" />
     </modules>
   </component>
 </project>

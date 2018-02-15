@@ -8,10 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yanco.roomier.R;
+import com.yanco.roomier.datalayer.dao.ProductDAO;
+import com.yanco.roomier.datalayer.factories.DAOFactory;
+import com.yanco.roomier.datalayer.factories.SqlLiteDAOFactory;
 
 public class productFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    DAOFactory SqlLiteDaoFactory;
+    ProductDAO productDAO;
 
     public productFragment() {}
 
@@ -39,6 +44,11 @@ public class productFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
+        SqlLiteDaoFactory = new SqlLiteDAOFactory(context);
+        productDAO = SqlLiteDaoFactory.getProductDAO();
+
+
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
