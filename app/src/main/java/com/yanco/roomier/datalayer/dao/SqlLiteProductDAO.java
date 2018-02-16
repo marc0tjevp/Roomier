@@ -28,8 +28,7 @@ public class SqlLiteProductDAO implements ProductDAO {
         Cursor cursor = connection.getReadableDatabase().rawQuery("SELECT * FROM product", null);
         List<Product> products = new ArrayList<>();
 
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
+            while (cursor.moveToNext()) {
 
                 // Get Values from DB
                 UUID productID = UUID.fromString(cursor.getString(cursor.getColumnIndex("productID")));
@@ -45,7 +44,6 @@ public class SqlLiteProductDAO implements ProductDAO {
                 products.add(p);
 
             }
-        }
         return products;
     }
 

@@ -39,10 +39,10 @@ public class productFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction("Products");
         }
-//
-//        for (Product p : productDAO.getAllProducts()) {
-//            System.out.println(p.getProductName());
-//        }
+
+        for (Product p : productDAO.getAllProducts()) {
+            System.out.println(p.getProductName());
+        }
 
         return view;
     }
