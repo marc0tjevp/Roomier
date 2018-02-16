@@ -3,7 +3,7 @@ package com.yanco.roomier.datalayer.dao;
 import com.yanco.roomier.model.Task;
 import com.yanco.roomier.model.User;
 
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -11,7 +11,7 @@ import java.util.UUID;
  */
 
 public interface TaskDAO {
-    Map getAllTasks();
+    List<Task> getAllTasks();
     Task getTask(UUID taskId);
     void insert(Task task);
     void delete(UUID taskId);

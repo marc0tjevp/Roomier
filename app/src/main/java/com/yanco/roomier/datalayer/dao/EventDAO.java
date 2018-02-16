@@ -12,7 +12,7 @@ import java.util.UUID;
  */
 
 public interface EventDAO {
-    List getAllEvents();
+    List<Event> getAllEvents();
     Event getEventById(UUID eventId);
     void insert(Event event);
     void update(Event event);

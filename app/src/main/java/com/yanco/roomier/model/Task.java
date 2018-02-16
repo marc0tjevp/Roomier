@@ -40,6 +40,10 @@ public class Task {
         return taskID;
     }
 
+    public void setTaskID(UUID taskID) {
+        this.taskID = taskID;
+    }
+
     public String getTaskName() {
         return taskName;
     }
