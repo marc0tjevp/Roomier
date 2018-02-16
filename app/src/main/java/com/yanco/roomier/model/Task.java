@@ -34,6 +34,8 @@ public class Task {
         this.completedDate = completedDate;
     }
 
+    public Task(){}
+
     public UUID getTaskID() {
         return taskID;
     }

@@ -30,6 +30,8 @@ public class Product {
         this.createTask = createTask;
     }
 
+    public Product(){}
+
     public UUID getProductID() {
         return productID;
     }

@@ -33,6 +33,8 @@ public class Event {
         this.createdBy = createdBy;
     }
 
+    public Event(){}
+
     public UUID getEventID() {
         return eventID;
     }
