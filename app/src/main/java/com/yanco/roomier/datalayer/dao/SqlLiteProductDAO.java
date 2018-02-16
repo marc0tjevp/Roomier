@@ -1,8 +1,12 @@
 package com.yanco.roomier.datalayer.dao;
 
+import android.database.Cursor;
+
 import com.yanco.roomier.datalayer.SQLiteConnection;
 import com.yanco.roomier.model.Product;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,8 +23,30 @@ public class SqlLiteProductDAO implements ProductDAO {
     }
 
     @Override
-    public Map getAllProducts() {
-        return null;
+    public List getAllProducts() {
+
+        Cursor cursor = connection.getWritableDatabase().rawQuery("SELECT * FROM product", null);
+        List<Product> products = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+
+                // Get Values from DB
+                UUID productID = UUID.fromString(cursor.getString(cursor.getColumnIndex("productID")));
+                String productName = cursor.getString(cursor.getColumnIndex("productName"));
+                int amount = cursor.getInt(cursor.getColumnIndex("amount"));
+                int minAmount = cursor.getInt(cursor.getColumnIndex("minAmount"));
+                Boolean createTask = cursor.getInt(cursor.getColumnIndex("createTask")) > 0;
+
+                // Make product object
+                Product p = new Product(productID, productName, amount, minAmount, createTask);
+
+                // Add Object to ArrayList
+                products.add(p);
+
+            }
+        }
+        return products;
     }
 
     @Override

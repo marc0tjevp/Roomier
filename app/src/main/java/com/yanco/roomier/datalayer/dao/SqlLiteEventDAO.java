@@ -1,12 +1,13 @@
 package com.yanco.roomier.datalayer.dao;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 
 import com.yanco.roomier.datalayer.SQLiteConnection;
 import com.yanco.roomier.model.Event;
 import com.yanco.roomier.model.User;
 
+import java.sql.Time;
+import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -25,7 +26,24 @@ public class SqlLiteEventDAO implements EventDAO {
 
     @Override
     public List getAllEvents() {
-        System.out.println("All Events");
+
+        Cursor cursor = connection.getWritableDatabase().rawQuery("SELECT * FROM event", null);
+
+        if (cursor.moveToFirst()) {
+            while (!cursor.isAfterLast()) {
+
+                UUID eventID = UUID.fromString(cursor.getString(cursor.getColumnIndex("eventID")));
+                String eventName = cursor.getString(cursor.getColumnIndex("eventName"));
+                Time startTime = Time.valueOf(cursor.getString(cursor.getColumnIndex("startTime")));
+                Time endTime = Time.valueOf(cursor.getString(cursor.getColumnIndex("endTime")));
+                Date date = Date.valueOf(cursor.getString(cursor.getColumnIndex("date")));
+                Boolean status = cursor.getInt(cursor.getColumnIndex("status")) > 0;
+
+                // TODO: Add user lists and create Event objects, add to list.
+
+            }
+        }
+
         return null;
     }
 
