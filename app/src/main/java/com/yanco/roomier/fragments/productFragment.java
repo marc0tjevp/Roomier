@@ -6,12 +6,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.yanco.roomier.R;
 import com.yanco.roomier.datalayer.dao.ProductDAO;
 import com.yanco.roomier.datalayer.factories.DAOFactory;
 import com.yanco.roomier.datalayer.factories.SqlLiteDAOFactory;
+import com.yanco.roomier.model.Event;
 import com.yanco.roomier.model.Product;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class productFragment extends Fragment {
 
@@ -19,7 +25,8 @@ public class productFragment extends Fragment {
     DAOFactory SqlLiteDaoFactory;
     ProductDAO productDAO;
 
-    public productFragment() {}
+    public productFragment() {
+    }
 
     public static productFragment newInstance() {
         return new productFragment();
@@ -28,21 +35,25 @@ public class productFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
 
         if (mListener != null) {
             mListener.onFragmentInteraction("Products");
         }
 
-        for (Product p : productDAO.getAllProducts()) {
-            System.out.println(p.getProductName());
-        }
+        ListView lv = (ListView) view.findViewById(R.id.productListView);
+
+        ArrayList<Product> products = (ArrayList<Product>) productDAO.getAllProducts();
+
+        ArrayAdapter<Product> adapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_list_item_1, products);
+
+        lv.setAdapter(adapter);
 
         return view;
     }

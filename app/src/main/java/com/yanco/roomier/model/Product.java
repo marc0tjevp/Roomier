@@ -85,4 +85,15 @@ public class Product {
             this.setCreateTask(true);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productID=" + productID +
+                ", productName='" + productName + '\'' +
+                ", amount=" + amount +
+                ", minAmount=" + minAmount +
+                ", createTask=" + createTask +
+                '}';
+    }
 }
