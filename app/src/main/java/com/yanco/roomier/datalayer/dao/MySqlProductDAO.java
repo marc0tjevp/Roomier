@@ -2,6 +2,7 @@ package com.yanco.roomier.datalayer.dao;
 
 import com.yanco.roomier.model.Product;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 public class MySqlProductDAO implements ProductDAO {
     @Override
-    public Map getAllProducts() {
+    public List getAllProducts() {
         return null;
     }
 

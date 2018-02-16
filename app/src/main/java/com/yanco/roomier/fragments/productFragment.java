@@ -11,6 +11,7 @@ import com.yanco.roomier.R;
 import com.yanco.roomier.datalayer.dao.ProductDAO;
 import com.yanco.roomier.datalayer.factories.DAOFactory;
 import com.yanco.roomier.datalayer.factories.SqlLiteDAOFactory;
+import com.yanco.roomier.model.Product;
 
 public class productFragment extends Fragment {
 
@@ -27,6 +28,7 @@ public class productFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -37,6 +39,10 @@ public class productFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction("Products");
         }
+//
+//        for (Product p : productDAO.getAllProducts()) {
+//            System.out.println(p.getProductName());
+//        }
 
         return view;
     }

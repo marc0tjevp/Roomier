@@ -59,50 +59,56 @@ public class SQLiteConnection extends SQLiteOpenHelper {
     private HashMap hp;
 
     public SQLiteConnection(Context context) {
-        super(context, DATABASE_NAME , null, 1);
+        super(context, DATABASE_NAME, null, 9);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "CREATE TABLE users" +
+                "CREATE TABLE user" +
                         "(userName text PRIMARY KEY NOT NULL, passwordHash text NOT NULL, password text NOT NULL, email text NOT NULL);" +
-                "CREATE TABLE tasks" +
+                        "CREATE TABLE task" +
                         "(taskID text PRIMARY KEY NOT NULL, taskName text NOT NULL, claimedBy text, taskCompleted bit DEFAULT 0 NOT NULL, " +
                         "createDate date NOT NULL, completedDate date, FOREIGN KEY(claimedBy) REFERENCES users(userName));" +
-                "CREATE TABLE products" +
+                        "CREATE TABLE product" +
                         "(productID text PRIMARY KEY NOT NULL, productName text NOT NULL, amount integer DEFAULT 0 NOT NULL, " +
                         "minAmount integer DEFAULT 0 NOT NULL, createTask bit DEFAULT 0 NOT NULL);" +
-                "CREATE TABLE events" +
+                        "CREATE TABLE event" +
                         "(eventID text PRIMARY KEY NOT NULL, eventName text NOT NULL, startTime time NOT NULL, endTime time NOT NULL, " +
                         "eventDate date NOT NULL, confirmationStatus bit DEFAULT 0 NOT NULL, createdBy text NOT NULL, FOREIGN KEY(createdBy) REFERENCES users(userName));" +
-                "CREATE TABLE event_user" +
+                        "CREATE TABLE event_user" +
                         "(eventID text PRIMARY KEY NOT NULL, userName text PRIMARY KEY NOT NULL, accepted bit NOT NULL, " +
                         "FOREIGN KEY(eventID) REFERENCES events(eventID), " +
                         "FOREIGN KEY(userName) REFERENCES users(userName));"
         );
 
-        db.execSQL(
-                "INSERT INTO products" +
-                        "(productID, productName)" +
-                        "VALUES(" + UUID.randomUUID() + ", 'Toiletpaper');" +
-                "INSERT INTO products" +
-                        "(productID, productName)" +
-                        "VALUES(" + UUID.randomUUID() + ", 'Vaccuum bags');" +
-                "INSERT INTO products" +
-                        "(productID, productName)" +
-                        "VALUES(" + UUID.randomUUID() + ", 'HG');"
-        );
+        db.execSQL("INSERT INTO product" +
+                "(productID, productName)" +
+                "VALUES('" + UUID.randomUUID() + "', 'Toiletpaper');" +
+                "INSERT INTO product" +
+                "(productID, productName)" +
+                "VALUES('" + UUID.randomUUID() + "', 'Vaccuum bags');" +
+                "INSERT INTO product" +
+                "(productID, productName)" +
+                "VALUES('" + UUID.randomUUID() + "', 'HG');");
+
+        System.out.println("ON CREATE DATABASE");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        System.out.println("ON UPGRADE DATABASE");
         db.execSQL("DROP TABLE IF EXISTS event_user");
         db.execSQL("DROP TABLE IF EXISTS events");
         db.execSQL("DROP TABLE IF EXISTS products");
         db.execSQL("DROP TABLE IF EXISTS tasks");
         db.execSQL("DROP TABLE IF EXISTS users");
+        db.execSQL("DROP TABLE IF EXISTS event");
+        db.execSQL("DROP TABLE IF EXISTS product");
+        db.execSQL("DROP TABLE IF EXISTS task");
+        db.execSQL("DROP TABLE IF EXISTS user");
+        System.out.println("ON UPGRADE DATABASE");
+
         onCreate(db);
     }
+
 }

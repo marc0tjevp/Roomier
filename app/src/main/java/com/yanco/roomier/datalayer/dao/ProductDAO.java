@@ -11,7 +11,7 @@ import java.util.UUID;
  */
 
 public interface ProductDAO {
-    List getAllProducts();
+    List<Product> getAllProducts();
     Product getProduct(UUID productId);
     void insert(Product product);
     void delete(UUID productId);
