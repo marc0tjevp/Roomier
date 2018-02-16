@@ -25,7 +25,7 @@ public class SqlLiteProductDAO implements ProductDAO {
     @Override
     public List getAllProducts() {
 
-        Cursor cursor = connection.getWritableDatabase().rawQuery("SELECT * FROM product", null);
+        Cursor cursor = connection.getReadableDatabase().rawQuery("SELECT * FROM product", null);
         List<Product> products = new ArrayList<>();
 
         if (cursor.moveToFirst()) {

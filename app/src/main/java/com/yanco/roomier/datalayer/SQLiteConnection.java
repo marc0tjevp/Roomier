@@ -56,20 +56,17 @@ public class SQLiteConnection extends SQLiteOpenHelper {
     public static final String EVENT_USER_COLUMN_USER_NAME = "userName";
     public static final String EVENT_USER_COLUMN_ACCEPTED = "accepted";
 
-    private HashMap hp;
+    private final String CREATE_USER = "CREATE TABLE user(userName text PRIMARY KEY NOT NULL, passwordHash text NOT NULL, password text NOT NULL, email text NOT NULL);";
+    private final String CREATE_TASK = "CREATE TABLE task(taskID text PRIMARY KEY NOT NULL, taskName text NOT NULL, claimedBy text, taskCompleted bit DEFAULT 0 NOT NULL, createDate date NOT NULL, completedDate date, FOREIGN KEY(claimedBy) REFERENCES users(userName));";
 
-    public SQLiteConnection(Context context) {
+    public SQLiteConnection(Context context){
         super(context, DATABASE_NAME, null, 9);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "CREATE TABLE user" +
-                        "(userName text PRIMARY KEY NOT NULL, passwordHash text NOT NULL, password text NOT NULL, email text NOT NULL);" +
-                        "CREATE TABLE task" +
-                        "(taskID text PRIMARY KEY NOT NULL, taskName text NOT NULL, claimedBy text, taskCompleted bit DEFAULT 0 NOT NULL, " +
-                        "createDate date NOT NULL, completedDate date, FOREIGN KEY(claimedBy) REFERENCES users(userName));" +
+   +
                         "CREATE TABLE product" +
                         "(productID text PRIMARY KEY NOT NULL, productName text NOT NULL, amount integer DEFAULT 0 NOT NULL, " +
                         "minAmount integer DEFAULT 0 NOT NULL, createTask bit DEFAULT 0 NOT NULL);" +
@@ -82,17 +79,18 @@ public class SQLiteConnection extends SQLiteOpenHelper {
                         "FOREIGN KEY(userName) REFERENCES users(userName));"
         );
 
-        db.execSQL("INSERT INTO product" +
-                "(productID, productName)" +
-                "VALUES('" + UUID.randomUUID() + "', 'Toiletpaper');" +
+        db.execSQL(
                 "INSERT INTO product" +
-                "(productID, productName)" +
-                "VALUES('" + UUID.randomUUID() + "', 'Vaccuum bags');" +
+                    "(productID, productName)" +
+                    "VALUES('" + UUID.randomUUID() + "', 'Toiletpaper');" +
                 "INSERT INTO product" +
-                "(productID, productName)" +
-                "VALUES('" + UUID.randomUUID() + "', 'HG');");
+                    "(productID, productName)" +
+                    "VALUES('" + UUID.randomUUID() + "', 'Vaccuum bags');" +
+                "INSERT INTO product" +
+                    "(productID, productName)" +
+                    "VALUES('" + UUID.randomUUID() + "', 'HG');");
 
-        System.out.println("ON CREATE DATABASE");
+        System.out.println("ON CREATE DATABASE, INSERTS");
     }
 
     @Override
