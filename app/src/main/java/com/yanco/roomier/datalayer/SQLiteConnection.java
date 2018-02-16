@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.UUID;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -79,7 +81,18 @@ public class SQLiteConnection extends SQLiteOpenHelper {
                         "FOREIGN KEY(eventID) REFERENCES events(eventID), " +
                         "FOREIGN KEY(userName) REFERENCES users(userName));"
         );
-        System.out.println("ON CREATE DATABASE");
+
+        db.execSQL(
+                "INSERT INTO products" +
+                        "(productID, productName)" +
+                        "VALUES(" + UUID.randomUUID() + ", 'Toiletpaper');" +
+                "INSERT INTO products" +
+                        "(productID, productName)" +
+                        "VALUES(" + UUID.randomUUID() + ", 'Vaccuum bags');" +
+                "INSERT INTO products" +
+                        "(productID, productName)" +
+                        "VALUES(" + UUID.randomUUID() + ", 'HG');"
+        );
     }
 
     @Override
